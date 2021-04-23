@@ -15,7 +15,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+# Image URL Imports
+from . import settings
+from django.contrib.staticfiles.urls import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+# View Imports
+from store.views import home_view, about_view, product_detail_view, product_create_view
 
 urlpatterns = [
+    path('', home_view, name='home'),
+    path('about/', about_view, name='about'),
+    path('product/', product_detail_view, name='productdetail'),
+    path('create/', product_create_view, name='productcreate'),
     path('admin/', admin.site.urls),
 ]
+
+# Image URLS
+
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
