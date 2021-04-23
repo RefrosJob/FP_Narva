@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div id="filter">
+    <h2>Filter field</h2>
+    <ul>
+        <li>Template cathegory</li>
+        <ul>
+            <li>Template subCathegory</li>
+            <ul>
+                <li>Template Attribute</li>
+            </ul>
+        </ul>
+    </ul>
+</div>
+<div id="products">
+    <h1>Current Filter</h1>
+    <div id="productsField">
+        {% for i in products %}
+            <div class="products-element">
+                <img width="300px" height="200px" src="{{i.imagePreview.url}}" alt="wtf">
+                <h3>{{ i.title }}</h3>
+            </div>
+        {% endfor %}   
+    </div>
+</div>
+{% endblock %}
